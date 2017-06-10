@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wei.you.zhihu.spider.dao.IAnswerDao">
+
+	<insert id="save" parameterType="java.util.List">
+		insert into
+		answer(`id`,`question_id`, `desc` , `author` , `insert_time`) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id} , #{item.questionId}, #{item.desc} ,
+			#{item.author} , now())
+		</foreach>
+	</insert>
+
+	<delete id="deleteByQuestionId" parameterType="java.lang.String">
+		delete from answer
+		where
+		question_id = #{questionId}
+	</delete>
+
+</mapper>  

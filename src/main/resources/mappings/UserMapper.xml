@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wei.you.zhihu.spider.dao.IUserDao">
+
+	<!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
+	<resultMap type="com.wei.you.zhihu.spider.entity.User" id="userResultMap">
+		<id property="id" column="id" />
+		<result property="userToken" column="user_token" />
+		<result property="location" column="location" />
+		<result property="business" column="business" />
+		<result property="employment" column="employment" />
+		<result property="education" column="education" />
+		<result property="username" column="username" />
+		<result property="url" column="url" />
+		<result property="agrees" column="agrees" />
+		<result property="thanks" column="thanks" />
+		<result property="asks" column="asks" />
+		<result property="answers" column="answers" />
+		<result property="posts" column="posts" />
+		<result property="followees" column="followees" />
+		<result property="followers" column="followers" />
+		<result property="hashId" column="hashId" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.wei.you.zhihu.spider.entity.User">
+		insert into
+		user(id,user_token,location,business,employment,education,username,url,agrees,thanks,asks,answers,posts,followees,followers,hashId,insert_time)
+		values(#{id},#{userToken},#{location},#{business},#{employment},#{education},#{username},#{url},#{agrees},#{thanks},#{asks},#{answers},#{posts},#{followees},#{followers},#{hashId},
+		now())
+	</insert>
+
+	<select id="selectById" resultMap="userResultMap">
+		select * from user where
+		id = #{id}
+	</select>
+
+	<update id="updateById" parameterType="com.wei.you.zhihu.spider.entity.Question">
+		update user SET
+		<if test=" null != userToken and '' != userToken">
+			user_token = #{userToken} ,
+		</if>
+		<if test=" null != location and '' != location">
+			location = #{location} ,
+		</if>
+		<if test=" null != business and '' != business">
+			business = #{business} ,
+		</if>
+		<if test=" null != employment and '' != employment">
+			employment = #{employment} ,
+		</if>
+		<if test=" null != education and '' != education">
+			education = #{education} ,
+		</if>
+		<if test=" null != username and '' != username">
+			username = #{username} ,
+		</if>
+		<if test=" null != url and '' != url">
+			url = #{url} ,
+		</if>
+		<if test="agrees != 0">
+			agrees = #{agrees} ,
+		</if>
+		<if test="thanks != 0">
+			thanks = #{thanks} ,
+		</if>
+		<if test="asks != 0">
+			asks = #{asks} ,
+		</if>
+		<if test="answers != 0">
+			answers = #{answers} ,
+		</if>
+		<if test="posts != 0">
+			posts = #{posts} ,
+		</if>
+		<if test="followees != 0">
+			followees = #{followees} ,
+		</if>
+		<if test="followers != 0">
+			followers = #{followers} ,
+		</if>
+		<if test=" null != hashId and '' != hashId">
+			hashId = #{hashId} ,
+		</if>
+		insert_time=now()
+		where id = #{id}
+	</update>
+
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from user where
+		id = #{id}
+	</delete>
+
+	<select id="queryAll" resultMap="userResultMap">
+		select * from user limit ${start},${size}
+	</select>
+
+</mapper>  

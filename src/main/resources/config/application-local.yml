@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    druid:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/zhihu_spider?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 555222
+      filters: stat
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  rabbitmq:
+    host: 192.168.56.101
+    port: 5672
+    #username: admin
+    #password: 123456       
+mybatis:
+  mapper-locations: classpath:/mappings/*.xml
+  type-aliases-package: com.wei.you.zhihu.spider.entity
+
+logging:
+  file: /home/zhihu/logs/application_log
+  level:
+    ROOT: INFO
+    org.springframework: INFO
+    org.apache.shiro: INFO
+    com.changan.anywhere: INFO
+    log4j.logger.com.ibatis: DEBUG  
+    
+constant:
+  match:
+    question:
+      edit-link: 'question_link.+?>(.+?)<'
+      url-link: '<h2>..+?question_link.+?href=\"(.+?)\".+?</h2>'
+      deep-url-link: 'question_link.+?href=\"(.+?)\"'
+    zhihu:
+      question: '<h1.+?>(.+?)</h1>'
+      detail-question: '<span class=\"RichText\">(.*?)</span>'
+      answer: '<div.+?\"ContentItem\".+?alt=\"(.+?)\".+?\"RichText CopyrightRichText-richText\"><p><b>(.+?)\"ContentItem-time\"'
+    real-question-url: 'question/(.*?)/'
+  zhihu:
+    url: 'https://www.zhihu.com'
+    explore-recommendations-url: 'https://www.zhihu.com/explore/recommendations'
