@@ -1,0 +1,10 @@
+info:
+  app_name: zhihu-spider
+  app_version: 0.0.1
+
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: ${PRO_ENV:local}
