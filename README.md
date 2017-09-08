@@ -94,3 +94,19 @@ $ java -jar zhihu-spider-1.0.0.jar
 (2).前端信息展示和信息检索的配套开发。初步规前端端完全分离，使用Redux+Flux+webpack+Babel进行整合开发。
 
 (3).服务器端多节点微服务设计实现，依赖中间件的集群部署实现，从而提高项目生产环境的可靠性和稳定性。
+
+5.相关文档链接
+
+[zhihu-spider之Lombok——zhihu-spider开源项目使用技术详解（其一）](http://blog.csdn.net/sun1021873926/article/details/73354634)
+
+[zhihu-spider之Swagger——zhihu-spider开源项目使用技术详解（其二）](http://blog.csdn.net/sun1021873926/article/details/74078235)
+
+[zhihu-spider之Druid——zhihu-spider开源项目使用技术详解（其三）](http://blog.csdn.net/sun1021873926/article/details/74504997)
+
+[zhihu-spider之Mybatis——zhihu-spider开源项目使用技术详解（其四）](http://blog.csdn.net/sun1021873926/article/details/75138982)
+
+[zhihu-spider之RabbitMQ——zhihu-spider开源项目使用技术详解（其五）](http://blog.csdn.net/sun1021873926/article/details/75576786)
+
+[zhihu-spider之Feign——zhihu-spider开源项目使用技术详解（其六）](http://blog.csdn.net/sun1021873926/article/details/76692867)
+
+[zhihu-spider之Hystrix——zhihu-spider开源项目使用技术详解（其七）](http://blog.csdn.net/sun1021873926/article/details/76695362)
